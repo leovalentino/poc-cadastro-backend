@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "poc.cadastro.jwtExpiration",
+    "type": "java.lang.String",
+    "description": "A description for 'poc.cadastro.jwtExpiration'"
+  },
+  {
+    "name": "poc.cadastro.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'poc.cadastro.jwtSecret'"
+  }
+]}
