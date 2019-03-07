@@ -13,6 +13,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "CLIENTE")
@@ -27,10 +29,13 @@ public class Cliente extends PocCadastroEntidade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idCliente;
 
-	@Column(name = "NOME")
+	@NotNull(message = "Campo obrigatorio")
+	@Size(min=3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
+	@Column(name = "NOME", nullable = false)
 	private String nome;
 
-	@Column(name = "CPF")
+	@NotNull(message = "Campo obrigatorio")
+	@Column(name = "CPF", nullable = false)
 	private String cpf;
 
 	@OneToOne(cascade = CascadeType.ALL)

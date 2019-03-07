@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TELEFONE")
@@ -18,11 +20,16 @@ public class Telefone extends PocCadastroEntidade {
 	@Column(name = "CODTELEFONE")
 	private Integer codTelefone;
 
+	@NotNull(message = "Campo obrigatorio")
 	@Column(name = "TIPOTELEFONE")
 	private TipoTelefoneEnum tipoTelefone;
 
+	@NotNull(message = "Campo obrigatorio")
 	@Column(name = "NUMERO")
 	private String numero;
+
+	@Transient
+	private String mascaraTelefone;
 
 	public Integer getCodTelefone() {
 		return codTelefone;
@@ -46,6 +53,14 @@ public class Telefone extends PocCadastroEntidade {
 
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+
+	public String getMascaraTelefone() {
+		return this.tipoTelefone == TipoTelefoneEnum.CELULAR ? "(00)00000-0000" : "(00)0000-0000";
+	}
+
+	public void setMascaraTelefone(String mascaraTelefone) {
+		this.mascaraTelefone = mascaraTelefone;
 	}
 
 }

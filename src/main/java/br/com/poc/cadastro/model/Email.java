@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Email")
@@ -18,7 +19,9 @@ public class Email extends PocCadastroEntidade {
 	@Column(name = "CODEMAIL")
 	private Integer codEmail;
 
-	@Column(name = "ENDERECOEMAIL")
+	@NotNull(message = "Campo obrigatorio")
+	@javax.validation.constraints.Email(message = "E-mail deve ser válido")
+	@Column(name = "ENDERECOEMAIL", nullable = false)
 	private String enderecoEmail;
 
 	public Integer getCodEmail() {

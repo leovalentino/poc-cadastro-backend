@@ -21,8 +21,8 @@ public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
 	public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e)
 			throws IOException, ServletException {
 
-		logger.error("Unauthorized error. Message - {}", e.getMessage());
-		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error -> Unauthorized");
+		logger.error("Erro de autorização. Message - {}", e.getMessage());
+		response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Erro -> Credenciais inválidas");
 	}
 
 }

@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -22,22 +23,27 @@ public class Endereco extends PocCadastroEntidade {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idEndereco;
 
-	@Column(name = "CEP")
+	@Column(name = "CEP", nullable = false)
 	private String cep;
 
-	@Column(name = "LOGRADOURO")
+	@NotNull(message = "Campo obrigatorio")
+	@Column(name = "LOGRADOURO", nullable = false)
 	private String logradouro;
 
+	@NotNull(message = "Campo obrigatorio")
 	@Column(name = "COMPLEMENTO")
 	private String complemento;
 
-	@Column(name = "BAIRRO")
+	@NotNull(message = "Campo obrigatorio")
+	@Column(name = "BAIRRO", nullable = false)
 	private String bairro;
 
-	@Column(name = "UF")
+	@NotNull(message = "Campo obrigatorio")
+	@Column(name = "UF", nullable = false)
 	private String uf;
 
-	@Column(name = "CIDADE")
+	@NotNull(message = "Campo obrigatorio")
+	@Column(name = "CIDADE", nullable = false)
 	private String cidade;
 
 	@OneToOne(mappedBy = "endereco")

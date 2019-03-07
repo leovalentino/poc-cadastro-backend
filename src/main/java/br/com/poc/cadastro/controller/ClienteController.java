@@ -34,9 +34,9 @@ public class ClienteController {
 	private ViaCEPClient viaCepClient;
 	
 	@PostMapping("/cliente/salvar")
-	public ResponseEntity<String> salvar(@RequestBody Cliente entidade) {
+	public ResponseEntity<String> salvar(@Valid @RequestBody Cliente entidade) {
 		clienteService.salvar(entidade);
-		return ResponseEntity.ok("Item Incluído com sucesso");
+		return ResponseEntity.ok("Item incluído com sucesso");
 	}
 	
 	@GetMapping("/cliente/tipoTelefone") 
@@ -45,7 +45,7 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/cliente/pesquisar")
-	public ResponseEntity<List<Cliente>> pesquisar(@Valid @RequestBody Cliente cliente) {
+	public ResponseEntity<List<Cliente>> pesquisar(@RequestBody Cliente cliente) {
 		return ResponseEntity.ok(clienteService.pesquisar(cliente));
 	}
 	
@@ -55,15 +55,15 @@ public class ClienteController {
 	}
 	
 	@PutMapping("/cliente/atualizar")
-	public ResponseEntity<String> atualizar(@RequestBody Cliente cliente) {
+	public ResponseEntity<String> atualizar(@Valid @RequestBody Cliente cliente) {
 		clienteService.salvar(cliente);
-		return ResponseEntity.ok("Item Alterado com sucesso");
+		return ResponseEntity.ok("Item alterado com sucesso");
 	}
 	
 	@DeleteMapping("/cliente/excluir/{id}")
 	public ResponseEntity<String> excluir(@PathVariable Integer id) {
 		clienteService.excluir(id);
-		return ResponseEntity.ok("Item Excluído com sucesso");
+		return ResponseEntity.ok("Item excluído com sucesso");
 	}
 	
 	@GetMapping("/cliente/cep/{cep}")

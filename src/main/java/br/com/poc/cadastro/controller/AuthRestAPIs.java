@@ -83,13 +83,13 @@ public class AuthRestAPIs {
 			switch (role) {
 			case "administrador":
 				PerfilUsuario adminRole = perfilUsuarioRepository.findByPerfil(PerfilUsuarioEnum.ADMINISTRADOR)
-						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+						.orElseThrow(() -> new RuntimeException("Erro! -> : Perfil não encontrado."));
 				roles.add(adminRole);
 
 				break;
 			case "funcionario":
 				PerfilUsuario pmRole = perfilUsuarioRepository.findByPerfil(PerfilUsuarioEnum.FUNCIONARIO)
-						.orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
+						.orElseThrow(() -> new RuntimeException("Erro! -> : Perfil não encontrado."));
 				roles.add(pmRole);
 
 				break;
